@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cacciacapitale.sytes.net/sitemap.xml

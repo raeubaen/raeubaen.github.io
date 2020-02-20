@@ -1,0 +1,27 @@
+Riunione Settembre 2019
+
+- CACCIA 27/09    
+    La quota di partecipazione prevista è di 5€. Tale quota coprirà l'acquisto di cibo (stima: 50% del totale), donazioni e fondo caccia (in percentuali da destinarsi).
+    Si prevede una pubblicità legata ai codici QR come prova generale per la pubblicità legata alla caccia AISF.
+    Le iscrizioni avverrano con il bot ideato dal senatore Serverus.
+    
+
+- CACCIA AISF
+    La data definitiva della caccia è fissata al 18/10.
+    Non sarà prevista una quota obbligatoria, ma un'offerta libera.    
+    Si utilizzerà il bot per le iscrizioni ideato dal senatore Serverus. Si decide di non chiedere l'e-mail, ma l'anno di corso. Dovrà inoltre consentire l'iscrizione di un'intera squadra.
+    Si effettuerà una pubblicità semi-nascosta tramite i codici QR sparsi in giro per la facoltà, della durata di almeno tre settimane (a partire dunque dal termine della caccia del 27/09).
+    Non è prevista altresì alcuna pubblicità "standard" (volantini, locandine, spam, ...).
+    Il numero di membri per squadra deve rientrare in [7, 12]. A seconda del numero di squadre, potrebbe essere necessario dividerle.
+    Segue che il percorso dovrà essere circolare, con la meta finale come centro.
+    Si assegnano come responsabili delle aree:
+        -Bot e iscrizione: Serverus, Lucifero;
+        -Pubblicità: Lucifero, Zeno, Galli;
+        -Indizi e percorso: Tutti i senatori organizzanti tranne Lucifero;
+        -Marketing (soldi, cibo, ...): Malpelo, MEGG. 
+
+- CACCE FUTURE
+    Non vengono trattati i restanti punti all'ODG:
+        -Cacce "pubbliche";
+        -Squadre fisse, come evoluzione dei nuclei fissi;
+        -Modifiche al sito.

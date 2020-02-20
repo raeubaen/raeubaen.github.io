@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<title>Caccia AISF</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style1.css">
+<link rel="stylesheet" href="font1.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" type="image/ico" href="https://www.mindomo.com/doc.htm?d=d8b4aa5317ad4f7cadf7e7a0bec6a3d8&m=592f76902d784ced81056ab33d2e4158">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: 100%;
+  background-image: url("logoaisf.png");
+  background-repeat: no-repeat;
+  min-height: 100%;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+</style>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <!--<a href="index.html" class="w3-bar-item w3-button w3-wide">HOME</a>-->
+    <!--Right-sided navbar links-->
+    <div class="w3-right w3-hide-small">
+      <a href="#news" class="w3-bar-item w3-button"><i class="fa fa-rss"></i> NEWS</a>
+      <a href="#iscrizione" class="w3-bar-item w3-button"><i class="fa fa-telegram"></i> ISCRIZIONE</a>
+      <a href="#squadre" class="w3-bar-item w3-button"><i class="fa fa-user"></i> SQUADRE</a>
+      <a href="#contatti" class="w3-bar-item w3-button"><i class="fa fa-user"></i> CONTATTI </a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icoN -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+  <a href="#news" onclick="w3_close()" class="w3-bar-item w3-button"> NEWS</a>
+  <a href="#iscrizione" onclick="w3_close()" class="w3-bar-item w3-button"> ISCRIZIONE</a>
+  <a href="#squadre" onclick="w3_close()" class="w3-bar-item w3-button"> SQUADRE</a>
+    <a href="#contatti" onclick="w3_close()" class="w3-bar-item w3-button"> CONTATTI</a>
+</nav>
+
+<!-- Header with full-height image -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-left w3-text-white" style="padding:48px">
+    <span class="w3-jumbo w3-hide-small"></span><br>
+    <span class="w3-xxlarge w3-hide-large w3-hide-medium"></span><br>
+    <span class="w3-large"></span>
+    <!--<p><a href="https://telegram.org/apps" target="_blank" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Cos'è AISF?</a></p>-->
+  </div> 
+</header>
+
+<!--<div class="w3-container" style="padding:128px 16px">  -->
+<p class="w3-center w3-large">
+<img src="local2.png" width="100%"></img>
+</p>
+
+<!-- INTRO -->
+<div class="w3-container" style="padding:128px 16px" id="about">
+ <h3 class="w3-center">ABSTRACT</h3>
+  <p class="w3-center w3-large">Unire è sempre meglio che dividere. </br> 
+	In questo caso, l'idea di svolgere una <a target="_blank" href="https://cacciacapitale.sytes.net">Caccia al Tesoro</a> e la voglia dell'<a href="ai-sf.it">AISF</a> 
+	(Associazione Italiana Studenti di Fisica) di promuoverla e supportarla ci consentono di 
+	portare l'evento su un altro livello, aggiungendo professionalità ed efficienza, senza penalizzare la sana competizione e il gusto della sfida.</br>
+	Se stai leggendo queste righe, sei ufficialmente invitato/a a partecipare a questo evento il 18/10.</br> </p>
+</div>
+
+<div class="w3-container" style="padding:128px 16px" id="about">
+ <h3 class="w3-center">COME? DOVE? QUANDO? ... PERCHE'?</h3>
+	 <p class="w3-center w3-large">Già, perché?</br>
+	Perché pensiamo sia meraviglioso poter trascendere ciò che altrimenti si limiterebbe allo studio. </br>
+	Perché crediamo fermamente che la conoscenza debba essere motivo di divertimento. </br>
+	Perché dopo aver provato con noi queste emozioni, te ne convincerai anche tu. </br>
+	La Caccia si svolge in notturna, tipicamente dalle 8 di sera alle 8 di mattina, tipicamente nel cuore di Roma, tipicamente a piedi. </br> 
+
+
+</div>
+
+<!-- ISCRIZIONE -->
+<div class="w3-container" style="padding:128px 16px" id="iscrizione">
+  <h3 class="w3-center">ISCRIZIONE</h3>
+  <p class="w3-center w3-large"> 
+	Visto il gran numero di partecipanti, risulta difficile gestire manualmente le partecipazioni, e conseguentemente le squadre.</br>
+	Pertanto, abbiamo ideato un'iscrizione automatica tramite un bot su Telegram, che risulta essere il metodo più sicuro e rapido per gestire le informazioni necessarie all'iscrizione.</br>
+	Vi chiediamo quindi di utilizzare <a href="https://telegram.me/cacciacapitale_bot" target="">questo link</a> e seguire le indicazioni (digitare "/start" se non dovessero apparire subito) per iscrivervi alla Caccia.
+	</p>
+</div>
+
+<!--NEWS -->
+<div class="w3-container" style="padding:128px 16px" id="news">
+  <h3 class="w3-center">NEWS</h3>
+  <p class="w3-center w3-large"> 
+
+	19//10 - Caccia terminata! Complimenti ai vincitori della squadra Shroedinger Katzen e ai secondi per un soffio della squadra Fo-caccia! </br>
+	
+	17/10 - È stato deciso di posticipare il termine ultimo per le iscrizioni. Termineranno il 18/10 alle ore 12.</br>
+
+	09/10 - Sono aperte le iscrizioni per la prima caccia AISF.</br>
+
+	01/10 - Il <a href="regolamento.txt" target="_blank">regolamento</a> della Caccia AISF è online. Leggilo!
+	</p>
+</div>
+
+<!-- SQUADRE -->
+<div class="w3-container" style="padding:128px 16px" id="squadre">
+  <h3 class="w3-center">SQUADRE</h3>
+  <p class="w3-center w3-large">
+	Qui troverai le squadre.</br>
+
+
+<div class="responsive-container" id="squadre-preview">
+	
+<iframe src="https://drive.google.com/file/d/1ZuyyvcFZ4djFNdJPuqofDMfaOb408h5E/preview?usp=sharing" style="width:100%; heigth:100%">
+</iframe>
+</div>
+	</p>
+</div>
+
+<!--CONTATTI -->
+<div class="w3-container" style="padding:128px 16px" id="contatti">
+  <h3 class="w3-center">CONTATTI</h3>
+  <p class="w3-center w3-large"> 
+
+	<ul class="w3-center w3-large">
+		<li> AISF Roma Sapienza - Martina Del Giorno: martina.delgiorno@ai-sf.it </li>
+		<li> Comitato organizzativo - Eleonora Galli: galli.eleonora99@gmail.com </li>
+		<li> Comitato organizzativo - Andrea Donato: andreadonato98@gmail.com </li>
+
+	</ul>
+
+	
+
+	</p>
+</div>
+
+
+<div class="w3-container" style="padding:128px 16px" id="contatti">
+<h5 class="w3-center">In collaborazione con...</h5>
+<p class="w3-center w3-large">
+<img src="pioda.jpeg" style="width:20%" hspace="20"></img>
+<img src="antro.jpg" style="width:20%" hspace="20"></img>
+</p>
+</div>
+
+
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+
+</footer>
+ 
+<script>
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+
+// Toggle between showing and hiding the sidebar when clicking the menu icon
+var mySidebar = document.getElementById("mySidebar");
+
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+  } else {
+    mySidebar.style.display = 'block';
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+}
+</script>
+
+</body>
+</html>
