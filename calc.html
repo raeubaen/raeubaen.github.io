@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/forge/0.8.2/forge.all.min.js"></script>
+</head>
+<style>
+body{
+  background-color: lightcyan;
+}
+
+h1 {
+  font-family: Papyrus, fantasy;
+  text-align: center;
+  border: 3px yellowgreen;
+  font-size: 40pt;
+}
+
+textarea{
+  width: 80vw;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;
+}
+
+span{
+    font-family: Papyrus, fantasy;
+    border: 3px yellowgreen;
+    font-size: 20pt;
+}
+
+button {
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30pt;
+  width: 20vw;
+}
+
+input
+{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    width: 50vw;
+}
+
+div.user{
+    display: block;
+    text-align: center; 
+    width: 100%
+}
+</style>
+<body>
+
+<script language="JavaScript">
+function c_ciph(){
+  var _d = document.getElementById("d").value;
+  var _n = document.getElementById("n").value;
+  var pw = document.getElementById("password").value;
+  var x = document.getElementById("myTextArea").value;
+  var md = forge.md.sha256.create();
+  var hashedPass = "f16b49f38336a58eba5a466ed614fcaef7ec13b7a107c6bdc170d63993239dc5"
+  md.start();
+  md.update(pw, "ascii");
+  var hashText = md.digest().toHex();
+  if (!(hashText == hashedPass)){
+      alert("Le prime 3 lettere sono errate!");
+      return 0;
+  }
+  var d = Number(_d);
+  var n = Number(_n);
+  console.log(d);
+  console.log(n);
+  var result='';
+  var numbers = {
+	"a": 0,
+	"b": 1,
+	"c": 2,
+	"d": 3,
+	"e": 4,
+	"f": 5,
+	"g": 6,
+	"h": 7,
+	"i": 8,
+	"j": 9,
+	"l": 10,
+	"m": 11,
+	"n": 12,
+	"o": 13,
+	"p": 14,
+	"q": 15,
+	"r": 16,
+	"s": 17,
+	"t": 18,
+	"u": 19,
+	"v": 20,
+	"z": 21
+  };
+  var letters = {
+	0: "a",
+	1: "b",
+	2: "c",
+	3: "d",
+	4: "e",
+	5: "f",
+	6: "g",
+	7: "h",
+	8: "i",
+	9: "j",
+	10: "l",
+	11: "m",
+	12: "n",
+	13: "o",
+	14: "p",
+	15: "q",
+	16: "r",
+	17: "s",
+	18: "t",
+	19: "u",
+	20: "v",
+	21: "z"
+  };
+  
+  console.log(letters);
+  console.log(numbers);
+  for (var i = 0, len = x.length; i < len; i++) {
+        cip_letter = x[i].toLowerCase();
+        if( !(cip_letter in numbers) ){
+		result += cip_letter;
+		continue;
+	}
+	cip_num = numbers[cip_letter];
+        clear_num = Math.pow(cip_num, d) % n;
+        if(clear_num > 21){
+		alert("n è errato");
+		return 0;
+	};
+	clear_letter = letters[clear_num];
+	result += clear_letter;
+  }
+  document.getElementById('result').value = result;
+}
+</script>
+
+<div class="user">
+<h1>Inserisci le prime 3 lettere decifrate a mano:</h1><br>
+<textarea id = "password" rows = "1"></textarea>
+<br><br><br><br>
+<h1>Testo da decifrare:</h1><br>
+<textarea id = "myTextArea" rows = "3">
+</textarea><br><br><br><br>
+<h1>Chiave per decifrare</h1>
+<span>d: </span>
+<input type = "number" id = "d" value = "" /><br><br>
+<span>n: </span>
+<input type = "number" id = "n" value = "" /><br><br>
+<button onclick="c_ciph()">Decifra</button><br><br><br><br>
+<h1>Testo in chiaro:<br></h1>
+<textarea id = "result" rows = "3">
+  </textarea>
+
+</div>
+
+
