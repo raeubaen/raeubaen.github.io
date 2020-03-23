@@ -28,33 +28,9 @@ alle 21.00 del 14 marzo.
 Per gli indizi successivi la consegna
 avverrà una volta ricevuta prova di aver
 risolto il precedente indizio, con validazione
-del ragionamento da parte del comitato, e,
-se l'indizio lo prevede, di essersi recati
-con almeno metá dei componenti della squadra,
-nel luogo previsto dalla soluzione.
-
-
-Se l'indizio é contrassegnato
-dall'indicazione "Comitato sul Posto" (🏁),
-squadra e comitato devono incontrarsi nel
-luogo previsto dalla soluzione.
-
-
-Se l'indizio é contrassegnato
-dall'indicazione "Video" (📽) la squadra deve inviare
-un video con l'esposizione completa
-del ragionamento in cui si fornisce
-prova di essersi recati nel luogo
-fornito dalla soluzione.
-Tale video viene inviato tramite apposito
-gruppo Telegram, posto in Silent Mode
-a 10 minuti.
-
-
-Se l'indizio é contrassegnato dall'indicazione
-"Telefono" (📱) non bisogna recarsi nel luogo
-fornito dalla soluzione.
-
+del ragionamento da parte del comitato, e
+dopo l'invio di un fotomontaggio con tutta la 
+squadra nel posto-soluzione.
 
 É prevista una pausa di 5 minuti tra
 un indizio e l'altro.
