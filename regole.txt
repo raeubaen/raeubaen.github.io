@@ -30,7 +30,8 @@ indizi, é prevista un interazione tra
 squadre e comitato, denominata
 V.G.R. (Verde, Giallo, Rosso).
 Sono previsti massimo 12 V.G.R.
-per ciascun indizio.Il V.G.R. consiste nella valutazione di un ragionamento
+per ciascun indizio.
+Il V.G.R. consiste nella valutazione di un ragionamento
 elaborato da una squadra e nell'indicazione di un segnale
 semaforico, con le seguenti convenzioni:
 - verde: il ragionamento é interamente corretto e utile
@@ -47,9 +48,10 @@ Nel caso di V.G.R. giallo, il comitato reinvia alla squadra il
 proprio ragionamento grassettando i periodi che sono
 interamente corretti e utili alla soluzione.
 Non saranno considerati corretti periodi che abusano di
-pronomi o aggettivi indefiniti, come "É un qualche tipo di
-cifrario", né periodi che sfruttano il trial-and-error, come "Il
-nome della canzone inizia per F".
+pronomi o aggettivi indefiniti, come 
+"É un qualche tipo di
+cifrario", né periodi che sfruttano il trial-and-error, come 
+"Il nome della canzone inizia per F".
 Nel caso di periodi ambigui o fraintendibili il comitato
 deciderá in completa autonomia se grassettare o no:
 é cura delle squadre evitare che ciò accada.
@@ -104,7 +106,8 @@ si riserva di assegnare una penalità che può
 includere:
 - da 5 a 30 minuti di ritardo sul successivo indizio;
 - da 1 a 3 V.G.R. massimi disponibili in meno sul
-prossimo indizio;Vince la squadra che risolve per prima l'indizio
+prossimo indizio;
+Vince la squadra che risolve per prima l'indizio
 finale, che viene esplicitamente segnalato come tale
 dal comitato.
 Sono previsti ulteriori eventuali premi:
