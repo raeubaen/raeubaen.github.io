@@ -1,0 +1,78 @@
+<html style="min-height: 100%;"> 
+  <head>
+    <style>
+      html, body {
+        height: 100%;
+      }
+      
+      html {
+        display: table;
+        margin: auto;
+      }
+      
+      body {
+        display: table-cell;
+        vertical-align: middle;
+      }
+    </style>
+    
+  </head>
+  <body style="background-color: black; min-height: 100%;"> 
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script> 
+    <script type="text/javascript">
+      out = (async function(){
+        model = await tf.loadLayersModel('https://raw.githubusercontent.com/raeubaen/ml/master/model.json');
+
+        rand = tf.randomNormal([1, 128])
+        temp = tf.tensor2d([0, 0, 0, 0, 1, 0, 0, 0, 0, 0], [1, 10])
+
+        pred = model.predict([temp, rand])
+        pred2 = tf.stack([pred, pred, pred, tf.ones(pred.shape)], axis=3)
+        values = pred2.dataSync();
+        arr = Array.from(values);
+
+        var new_canvas = document.createElement('canvas');
+        var mc_ctx = new_canvas.getContext('2d');
+        new_canvas.width = 28;
+        new_canvas.height = 28;
+        var mc_imageData = mc_ctx.getImageData(0,0, 28, 28);
+        var mc_px_data = mc_imageData.data;
+
+        for ( var i = 0; i <= arr.length; i++ ) {
+            mc_px_data[i] = arr[i]*255;
+        }
+
+        mc_px_data = new Uint8ClampedArray(mc_px_data);
+        mc_imageData.data.set(mc_px_data);
+        mc_ctx.putImageData(mc_imageData, 0, 0);
+        return new_canvas
+      })()
+
+      function resizeTo(canvas,pct){
+        var cw=canvas.width;
+        var ch=canvas.height;
+        var tempCanvas=document.createElement("canvas");
+        var tctx=tempCanvas.getContext("2d");
+        tempCanvas.width=cw;
+        tempCanvas.height=ch;
+        tctx.drawImage(canvas,0,0);
+
+        L = Math.round(0.8*Math.min(window.innerWidth, window.innerHeight));
+        canvas.width  = L;
+        canvas.height = L;
+
+        var ctx=canvas.getContext('2d');
+        ctx.drawImage(tempCanvas,0,0,cw,ch,0,0,L,L);
+      }
+
+      out.then(function(canvas){
+          pct = 
+          resizeTo(canvas, 10);
+          document.body.appendChild(canvas);
+      });
+
+    </script>
+
+
+  </body>
+</html>
