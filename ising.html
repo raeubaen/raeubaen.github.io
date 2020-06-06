@@ -3,72 +3,67 @@
   <head>
     <title>GAN-generated Ising Configurations</title> 
     <style>
-      html, body {
-        height: 100%;
-      }
-      
       html {
         display: table;
         margin: auto;
+        height: 100%;
       }
-      
       body {
         display: table-cell;
         vertical-align: middle;
         background-color: black;
         text-align: center;
+        height: 100%;
       }
       p, a {
-	color: white;
+	      color: white;
       }
       input {
         text-align: center;
       }
     </style>
-    
   </head>
-  <body style="background-color: black; min-height: 100%;"> 
+  <body> 
     <img src="831.svg" id="preloader"></img>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script> 
     <script type="text/javascript">
       get_model = (async function(){
         m = await tf.loadLayersModel('https://raw.githubusercontent.com/raeubaen/ml/master/model.json');
-	return m
+	      return m
       })();
 
       function get_small_canvas(temp_class, flip){
-	canvas = get_model.then(function(model){
-        rand = tf.randomNormal([1, 128])
-	values = tf.oneHot(temp_class, 10).dataSync();
-	arr = Array.from(values);
-        temp = tf.tensor2d(arr, [1, 10])
+	      canvas = get_model.then(function(model){
+          rand = tf.randomNormal([1, 128])
+          values = tf.oneHot(temp_class, 10).dataSync();
+          arr = Array.from(values);
+          temp = tf.tensor2d(arr, [1, 10])
 
-        pred = model.predict([temp, rand])
-        pred2 = tf.stack([pred, pred, pred, tf.ones(pred.shape)], axis=3)
-        values = pred2.dataSync();
-        arr = Array.from(values);
+          pred = model.predict([temp, rand])
+          pred2 = tf.stack([pred, pred, pred, tf.ones(pred.shape)], axis=3)
+          values = pred2.dataSync();
+          arr = Array.from(values);
 
-        var new_canvas = document.createElement('canvas');
-        var mc_ctx = new_canvas.getContext('2d');
-        new_canvas.width = 28;
-        new_canvas.height = 28;
-        var mc_imageData = mc_ctx.getImageData(0,0, 28, 28);
-        var mc_px_data = mc_imageData.data;
+          var new_canvas = document.createElement('canvas');
+          var mc_ctx = new_canvas.getContext('2d');
+          new_canvas.width = 28;
+          new_canvas.height = 28;
+          var mc_imageData = mc_ctx.getImageData(0,0, 28, 28);
+          var mc_px_data = mc_imageData.data;
 
-        for ( var i = 0; i <= arr.length; i++ ) {
-	    if (arr[i]>0)
-	        mc_px_data[i] = 255
-	    
-	    else 
-	        mc_px_data[i] = 0;
-        }
+          for ( var i = 0; i <= arr.length; i++ ) {
+            if (arr[i]>0)
+              mc_px_data[i] = 255
+            else 
+              mc_px_data[i] = 0;
+          }
 
-        mc_px_data = new Uint8ClampedArray(mc_px_data);
-        mc_imageData.data.set(mc_px_data);
-        mc_ctx.putImageData(mc_imageData, 0, 0);
-        return new_canvas
-	});
-	return canvas
+          mc_px_data = new Uint8ClampedArray(mc_px_data);
+          mc_imageData.data.set(mc_px_data);
+          mc_ctx.putImageData(mc_imageData, 0, 0);
+          return new_canvas
+      	});
+	      return canvas
       }
 
       function resizeTo(img, scale){
@@ -111,13 +106,13 @@
       
       function display(temp_class){
         rand = Math.random()
-	if (rand > 0.5)
-	  flip = 1
-	else
-	  flip = -1
-	canvas = get_small_canvas(temp_class, flip)
-	canvas.then(function(res_canvas){
-          res_canvas = resizeTo(res_canvas, 10);
+	      if (rand > 0.5)
+	        flip = 1
+	      else
+	        flip = -1
+	      canvas = get_small_canvas(temp_class, flip)
+	      canvas.then(function(canvas){
+          res_canvas = resizeTo(canvas, 10);
           old_canvas = document.getElementById("ising_canvas")
           if (old_canvas !== null)
             old_canvas.parentNode.replaceChild(res_canvas, old_canvas);
