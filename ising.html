@@ -29,56 +29,52 @@
     <script type="text/javascript">
       get_model = (async function(){
         m = await tf.loadLayersModel('https://raw.githubusercontent.com/raeubaen/ml/master/model.json');
-	      return m
+	    return m
       })();
 
       function get_small_canvas(temp_class){
 	      canvas = get_model.then(function(model){
-          rand = tf.randomNormal([1, 128])
-          values = tf.oneHot(temp_class, 10).dataSync();
-          arr = Array.from(values);
-          temp = tf.tensor2d(arr, [1, 10])
+              rand = tf.randomNormal([1, 128])
+              values = tf.oneHot(temp_class, 10).dataSync();
 
-          pred = model.predict([temp, rand])
-          pred2 = tf.stack([pred, pred, pred, tf.ones(pred.shape)], axis=3)
-          values = pred2.dataSync();
-          arr = Array.from(values);
+              arr = Array.from(values);
+              temp = tf.tensor2d(arr, [1, 10])
 
-          var new_canvas = document.createElement('canvas');
-          var mc_ctx = new_canvas.getContext('2d');
-          new_canvas.width = 28;
-          new_canvas.height = 28;
-          var mc_imageData = mc_ctx.getImageData(0,0, 28, 28);
-          var mc_px_data = mc_imageData.data;
+              pred = model.predict([temp, rand])
+              pred2 = tf.stack([pred, pred, pred, tf.ones(pred.shape)], axis=3)
+              values = pred2.dataSync();
+              arr = Array.from(values);
 
-          for ( var i = 0; i <= arr.length; i++ ) {
-            if (arr[i]>0)
-              mc_px_data[i] = 255
-            else 
-              mc_px_data[i] = 0;
-          }
+              var new_canvas = document.createElement('canvas');
+              var mc_ctx = new_canvas.getContext('2d');
+              new_canvas.width = 28;
+              new_canvas.height = 28;
 
-          mc_px_data = new Uint8ClampedArray(mc_px_data);
-          mc_imageData.data.set(mc_px_data);
-          mc_ctx.putImageData(mc_imageData, 0, 0);
+              var mc_imageData = mc_ctx.getImageData(0,0, 28, 28);
+              var mc_px_data = mc_imageData.data;
 
-	if (Math.random() > 0.5){	
-		mc_ctx.globalCompositeOperation='difference';
-		mc_ctx.fillStyle = "white";
-		mc_ctx.globalAlpha = 1;  // alpha 0 = no effect 1 = full effect
-		mc_ctx.fillRect(0, 0, new_canvas.width, new_canvas.height);
-         }
-          return new_canvas
-      	});
+              for ( var i = 0; i <= arr.length; i++ ) {
+                if (arr[i]>0)
+                  mc_px_data[i] = 255
+                else 
+                  mc_px_data[i] = 0;
+              }
+
+             mc_px_data = new Uint8ClampedArray(mc_px_data);
+             mc_imageData.data.set(mc_px_data);
+             mc_ctx.putImageData(mc_imageData, 0, 0);
+             if (Math.random() > 0.5){	
+                mc_ctx.globalCompositeOperation='difference';
+        		mc_ctx.fillStyle = "white";
+        		mc_ctx.globalAlpha = 1;  // alpha 0 = no effect 1 = full effect
+		        mc_ctx.fillRect(0, 0, new_canvas.width, new_canvas.height);
+             }
+            return new_canvas
+      	  });
 	      return canvas
       }
 
       function resizeTo(img, scale){
-        // Takes an image and a scaling factor and returns the scaled image
-
-        // The original image is drawn into an offscreen canvas of the same size
-        // and copied, pixel by pixel into another offscreen canvas with the 
-        // new size.
 
         var widthScaled = img.width * scale;
         var heightScaled = img.height * scale;
@@ -114,36 +110,36 @@
       function display(temp_class){
 	      canvas = get_small_canvas(temp_class)
 	      canvas.then(function(canvas){
-          res_canvas = resizeTo(canvas, 10);
-          old_canvas = document.getElementById("ising_canvas")
-	  res_canvas.style.border = "2px solid red"
-          if (old_canvas !== null)
-            old_canvas.parentNode.replaceChild(res_canvas, old_canvas);
-          else
-            document.body.insertBefore(res_canvas, document.body.firstChild);
-          document.getElementById("preloader").style.display = "none"
-        });
+              res_canvas = resizeTo(canvas, 10);
+              old_canvas = document.getElementById("ising_canvas")
+    	      res_canvas.style.border = "2px solid red"
+              if (old_canvas !== null)
+                old_canvas.parentNode.replaceChild(res_canvas, old_canvas);
+              else
+                document.body.insertBefore(res_canvas, document.body.firstChild);
+              document.getElementById("preloader").style.display = "none"
+            });
       }
 
       display(4);
 
       function update(){
-	input = document.getElementById("temp_class")
-	temp_class = document.getElementById("temp_class").value
-	if (temp_class == "")
-	  return null
+        input = document.getElementById("temp_class")
+	    temp_class = document.getElementById("temp_class").value
+	    if (temp_class == "")
+            return null
         temp_class = parseInt(temp_class)
         console.log(temp_class)
-	if (temp_class < 0){
-	  input.value = 0
-	  temp_class = 0
+	    if (temp_class < 0){
+    	  input.value = 0
+    	  temp_class = 0
         }
-	if (temp_class > 9){
-	  temp_class = 9
-	  input.value = 9
+    	if (temp_class > 9){
+    	  temp_class = 9
+    	  input.value = 9
         }
         document.getElementById("temp_value").value = temp_class/2 + " - " + (temp_class+1)/2
-	display(temp_class)
+    	display(temp_class)
       }
             
     </script>
