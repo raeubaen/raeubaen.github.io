@@ -68,7 +68,7 @@
       })();
 
       function get_small_canvas(temp_class){
-	      canvas = get_model.then(function(model){
+        canvas = get_model.then(function(model){
           rand = tf.randomNormal([1, 128])
           values = tf.oneHot(temp_class, 10).dataSync();
 
@@ -106,7 +106,7 @@
           }
           return new_canvas
       	});
-	      return canvas
+        return canvas
       }
 
       function resizeTo(img, scale){
@@ -143,8 +143,8 @@
       }
       
       function display(temp_class){
-	      canvas = get_small_canvas(temp_class)
-	      canvas.then(function(canvas){
+        canvas = get_small_canvas(temp_class)
+        canvas.then(function(canvas){
           res_canvas = resizeTo(canvas, 10);
           old_canvas = document.getElementById("ising_canvas")
           res_canvas.style.border = "2px solid red"
@@ -162,7 +162,7 @@
         input = document.getElementById("temp_class")
         temp_class = document.getElementById("temp_class").value
         if (temp_class == "")
-              return null
+          return null
         temp_class = parseInt(temp_class)
         if (temp_class < 0){
           input.value = 0
