@@ -45,6 +45,7 @@
 
     <div id="preloader">
       <p>Loading model and weights</p>
+      <p id="percentage"></p>
       <img src="831.svg" id="wheel"></img>
     </div>
     <br><br>
@@ -63,7 +64,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.3.0/dist/tf.min.js"></script> 
     <script type="text/javascript">
       get_model = (async function(){
-        m = await tf.loadLayersModel('https://raw.githubusercontent.com/raeubaen/ml/master/dissertazione/model.json');
+        m = await tf.loadLayersModel('https://raw.githubusercontent.com/raeubaen/ml/master/dissertazione/model.json', {
+          onProgress: function(fraction){
+            percentageP = document.getElementById("percentage")
+            percentageP.innerHTML = fraction
+          }
+        });
 	return m;
       })();
 
