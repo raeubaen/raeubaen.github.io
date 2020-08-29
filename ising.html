@@ -33,7 +33,7 @@
         border-color: red;
       }
       #wheel {
-        height: 80%;    
+        height: 60%;    
       }
       #refresh {
         width: 100px;
@@ -67,8 +67,8 @@
         m = await tf.loadLayersModel('https://raw.githubusercontent.com/raeubaen/ml/master/dissertazione/model.json', {
           onProgress: function(fraction){
             percentageP = document.getElementById("percentage")
-            percentageP.innerHTML = fraction
-          }
+            percentageP.innerHTML = Math.round(fraction*100).toString() + "%"
+          }.
         });
 	return m;
       })();
