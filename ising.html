@@ -81,8 +81,8 @@
           arr = Array.from(values);
           temp = tf.tensor2d(arr, [1, 10])
 
-          pred = model.predict([temp, rand]) # image with 1 channel
-          rgb_pred = tf.stack([pred, pred, pred, tf.ones(pred.shape)], axis=3) # with 3 channels
+          pred = model.predict([temp, rand]) // image with 1 channel
+          rgb_pred = tf.stack([pred, pred, pred, tf.ones(pred.shape)], axis=3) // with 3 channels
           values = rgb_pred.dataSync();
           arr = Array.from(values);
 
