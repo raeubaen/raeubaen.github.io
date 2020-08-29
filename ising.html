@@ -24,8 +24,8 @@
       }
       #preloader {
         margin-top: auto;
-        margin-left:auto;
-        margin-right:auto;
+        margin-left: auto;
+        margin-right: auto;
         height: 284px;
         width: 284px;
         border-width: 2px;
@@ -81,9 +81,9 @@
           arr = Array.from(values);
           temp = tf.tensor2d(arr, [1, 10])
 
-          pred = model.predict([temp, rand])
-          pred2 = tf.stack([pred, pred, pred, tf.ones(pred.shape)], axis=3)
-          values = pred2.dataSync();
+          pred = model.predict([temp, rand]) # image with 1 channel
+          rgb_pred = tf.stack([pred, pred, pred, tf.ones(pred.shape)], axis=3) # with 3 channels
+          values = rgb_pred.dataSync();
           arr = Array.from(values);
 
           var new_canvas = document.createElement('canvas');
