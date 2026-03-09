@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Word/Letter Numbering</title>
+<style>
+  body { font-family: monospace; padding: 20px; }
+  textarea { width: 100%; height: 150px; margin-bottom: 10px; }
+  label { display: block; margin-top: 10px; }
+  .output { margin-top: 20px; white-space: pre; font-family: monospace; }
+</style>
+</head>
+<body>
+
+<h2>Word/Letter Numbering</h2>
+
+<textarea id="inputText" placeholder="Paste your text here..."></textarea>
+
+<label>
+  <input type="checkbox" id="apostropheWord"> Treat apostrophes as part of words
+</label>
+
+<label>
+  Mode:
+  <select id="modeSelect">
+    <option value="word">Word numbering</option>
+    <option value="letter">Letter numbering</option>
+  </select>
+</label>
+
+<button id="analyzeBtn">Analyze Text</button>
+
+<div class="output" id="outputText"></div>
+
+<script>
+document.getElementById('analyzeBtn').addEventListener('click', function() {
+    let text = document.getElementById('inputText').value;
+    const apostropheWord = document.getElementById('apostropheWord').checked;
+    const mode = document.getElementById('modeSelect').value;
+
+    const lines = text.split('\n');
+    let output = '';
+    let wordCounter = 1;
+
+    lines.forEach(line => {
+        if (!line.trim()) { 
+            output += '\n'; 
+            return; 
+        }
+
+        const words = apostropheWord 
+            ? line.match(/\b[\w']+\b/g) 
+            : line.match(/\b\w+\b/g);
+        if (!words) {
+            output += line + '\n\n';
+            return;
+        }
+
+        if (mode === 'word') {
+            // WORD NUMBERING MODE
+            const colWidths = words.map((w, i) => Math.max(w.length, (wordCounter + i).toString().length));
+            let wordLine = '';
+            let numberLine = '';
+
+            words.forEach((word, i) => {
+                const width = colWidths[i];
+                const spaceAfterWord = width - word.length;
+                wordLine += word + ' '.repeat(spaceAfterWord + 1);
+
+                const numStr = wordCounter.toString();
+                const spaceBefore = Math.floor((width - numStr.length)/2);
+                const spaceAfter = width - numStr.length - spaceBefore;
+                numberLine += ' '.repeat(spaceBefore) + numStr + ' '.repeat(spaceAfter + 1);
+
+                wordCounter++;
+            });
+
+            output += wordLine.trimEnd() + '\n' + numberLine.trimEnd() + '\n';
+
+        } else if (mode === 'letter') {
+            // LETTER NUMBERING MODE WITH PERFECT WORD NUMBER ALIGNMENT
+            let wordLine = '';
+            let letterNumberLine = '';
+            let wordNumberLine = '';
+            let letterPositions = []; // store the starting column of each letter
+
+            // Build letters row and letter numbers row
+            let col = 0; // current column index
+            words.forEach(word => {
+                const letters = word.split('');
+                letters.forEach((l,i) => {
+                    wordLine += l + ' '; // space after letter
+                    letterNumberLine += (i+1) + ' '; // letter numbers with same spacing
+                    letterPositions.push(col); // store starting column of each letter
+                    col += 2; // letter + space
+                });
+                // space between words
+                wordLine += ' ';
+                letterNumberLine += ' ';
+                col += 1;
+            });
+
+            // Build word numbers row
+            wordNumberLine = ' '.repeat(col); // start with empty spaces
+            words.forEach((word, wIdx) => {
+                const firstLetterCol = letterPositions[words.slice(0,wIdx).join('').length]; // first letter of this word
+                const wordNumStr = (wordCounter + wIdx).toString();
+                // replace spaces at position firstLetterCol
+                wordNumberLine = wordNumberLine.substring(0, firstLetterCol) + wordNumStr + wordNumberLine.substring(firstLetterCol + wordNumStr.length);
+            });
+            wordCounter += words.length;
+
+            output += wordLine.trimEnd() + '\n' + letterNumberLine.trimEnd() + '\n' + wordNumberLine.trimEnd() + '\n';
+
+
+        }
+    });
+
+    document.getElementById('outputText').textContent = output.trimEnd();
+});
+</script>
+
+</body>
+</html>
